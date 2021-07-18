@@ -20,10 +20,10 @@ public class Fii extends Ativo{
 	private float dividendYeld;
 	private BigDecimal dividendo;
 	private float vacanciaFisica;
-	private String quantidadeAtivos;
+	private int quantidadeAtivos;
 
 	public Fii(String ticker, BigDecimal preco, Date dataIPO, String nomeFundo, String setor, float dividendYeld,
-			   BigDecimal dividendo, float vacanciaFisica, String quantidadeAtivos) {
+			   BigDecimal dividendo, float vacanciaFisica, int quantidadeAtivos) {
 		super(ticker, preco, dataIPO, setor);
 		this.nomeFundo = nomeFundo;
 		this.dividendYeld = dividendYeld;

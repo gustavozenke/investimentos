@@ -10,12 +10,12 @@ import br.com.zenke.investimentos.repository.FIIRepository;
 import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerFII;
 
 @Service
-public class RemoveFIIService {
+public class RemoverFIIService {
 
 	@Autowired
 	private FIIRepository repository;
 
-	public ResponseEntity removeFII(String ticker) {
+	public ResponseEntity removerFII(String ticker) {
 
 		if (!validaTickerFII(ticker))
 			return ResponseEntity.badRequest().body("Ticker inválido");

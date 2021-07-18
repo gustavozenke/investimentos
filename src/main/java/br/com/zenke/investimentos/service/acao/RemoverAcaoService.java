@@ -10,12 +10,12 @@ import br.com.zenke.investimentos.repository.AcaoRepository;
 import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerAcao;
 
 @Service
-public class RemoveAcaoService {
+public class RemoverAcaoService {
 
 	@Autowired
 	private AcaoRepository repository;
 
-	public ResponseEntity removeAcao(String ticker) {
+	public ResponseEntity removerAcao(String ticker) {
 
 		if (!validaTickerAcao(ticker))
 			return ResponseEntity.badRequest().body("Ticker inválido");

@@ -41,6 +41,6 @@ public class FiiResponse {
 	private float vacanciaFisica;
 
 	@JsonProperty("quantidade_de_ativos")
-	private String quantidadeAtivos;
+	private int quantidadeAtivos;
 	
 }

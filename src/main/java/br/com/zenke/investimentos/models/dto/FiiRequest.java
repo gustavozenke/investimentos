@@ -55,5 +55,5 @@ public class FiiRequest {
     private float vacanciaFisica;
 
     @NotNull
-    private String quantidadeAtivos;
+    private int quantidadeAtivos;
 }

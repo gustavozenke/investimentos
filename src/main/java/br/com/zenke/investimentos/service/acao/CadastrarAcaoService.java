@@ -25,7 +25,7 @@ public class CadastrarAcaoService {
 	@Autowired
 	private Optional<Acao> acaoDatabase;
 
-	public ResponseEntity<?> cadastrarAcao(Acao acao) {
+	public ResponseEntity cadastrarAcao(Acao acao) {
 
 		if (!validaTickerAcao(acao.getTicker()))
 			return ResponseEntity.badRequest().body("Ticker inválido");
