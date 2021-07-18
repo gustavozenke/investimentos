@@ -26,17 +26,20 @@ public class ConsultarListaAcoesService {
 	private final List<AcaoResponse> listaAcoesDTO = new ArrayList<>();
 
 	public ResponseEntity consultarListaAcoes() {
+
 		try {
 			listaAcoes = repository.findAll();
-			System.out.println(listaAcoes.size());
+
 			for (int i = 0; i < listaAcoes.size(); i++) {
 				AcaoDTO = new DozerBeanMapper().map(listaAcoes.get(i), AcaoResponse.class);
 				listaAcoesDTO.add(AcaoDTO);
 			}
+
 			return ResponseEntity.ok(listaAcoesDTO);
 
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(e.getMessage());
 		}
 	}
 

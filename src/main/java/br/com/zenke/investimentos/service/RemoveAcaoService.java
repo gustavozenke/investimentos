@@ -16,17 +16,19 @@ public class RemoveAcaoService {
 
 	public ResponseEntity removeAcao(String ticker) {
 
-		if (!validaTickerAcao(ticker)) {
+		if (!validaTickerAcao(ticker))
 			return ResponseEntity.badRequest().body("Ticker inválido");
-		}
 
 		try {
 			repository.deleteById(ticker);
 			return ResponseEntity.ok().body("Ação " + ticker + " removida com sucesso da base de dados.");
+
 		} catch (NoSuchElementException e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ação não encontrada");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("Ação não encontrada");
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(e.getMessage());
 		}
 	}
 

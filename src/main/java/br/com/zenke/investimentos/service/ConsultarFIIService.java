@@ -32,12 +32,15 @@ public class ConsultarFIIService {
 		try {
 			FII = repository.findById(ticker).get();
 			response = new DozerBeanMapper().map(FII, FiiResponse.class);
+
 			return ResponseEntity.ok(response);
+
 		} catch (NoSuchElementException e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fundo Imobiliario não encontrado");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("Fundo Imobiliario não encontrado");
 		} catch (Exception e) {
-			System.out.println("Erro: " + e.getMessage());
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(e.getMessage());
 		}
 	}
 }

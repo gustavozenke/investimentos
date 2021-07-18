@@ -21,14 +21,12 @@ public class RemocaoController {
 	private RemoveFIIService removerFII;
 	
 	@DeleteMapping("/acao")
-	public ResponseEntity RemoverAcao(@RequestParam(name = "ticker", required = true) String ticker) {
-		
+	public ResponseEntity RemoverAcao(@RequestParam(name = "ticker") String ticker) {
 		return removerAcao.removeAcao(ticker);
 	}
 
 	@DeleteMapping("/fundo_imobiliario")
-	public ResponseEntity RemoverFII(@RequestParam(name = "ticker", required = true) String ticker) {
-
+	public ResponseEntity RemoverFII(@RequestParam(name = "ticker") String ticker) {
 		return removerFII.removeFII(ticker);
 	}
 }

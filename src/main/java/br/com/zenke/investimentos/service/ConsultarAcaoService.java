@@ -32,12 +32,15 @@ public class ConsultarAcaoService {
 		try {
 			acao = repository.findById(ticker).get();
 			response = new DozerBeanMapper().map(acao, AcaoResponse.class);
+
 			return ResponseEntity.ok(response);
+
 		} catch (NoSuchElementException e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ação não encontrada");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("Ação não encontrada");
 		} catch (Exception e) {
-			System.out.println("Erro: " + e.getMessage());
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(e.getMessage());
 		}
 	}
 }

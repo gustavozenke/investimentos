@@ -26,16 +26,20 @@ public class ConsultarListaFIIsService {
 	private FiiResponse FIIDTO;
 
 	public ResponseEntity consultarListaFIIs() {
+
 		try {
 			listaFIIs = repository.findAll();
-			System.out.println(listaFIIs.size());
+
 			for (int i = 0; i < listaFIIs.size(); i++) {
 				FIIDTO = new DozerBeanMapper().map(listaFIIs.get(i), FiiResponse.class);
 				listaFIIsDTO.add(FIIDTO);
 			}
+
 			return ResponseEntity.ok(listaFIIsDTO);
+
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(e.getMessage());
 		}
 	}
 

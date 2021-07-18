@@ -1,6 +1,10 @@
 package br.com.zenke.investimentos.service;
 
 import java.util.Optional;
+
+import br.com.zenke.investimentos.models.dto.AcaoResponse;
+import br.com.zenke.investimentos.models.dto.FiiResponse;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -19,20 +23,26 @@ public class CadastrarAcaoService {
 	@Autowired
 	private Optional<Acao> acaoDatabase;
 
+	@Autowired
+	private AcaoResponse response;
+
 	public ResponseEntity<?> cadastrarAcao(Acao acao) {
 
-		if (!validaTickerAcao(acao.getTicker())) {
+		if (!validaTickerAcao(acao.getTicker()))
 			return ResponseEntity.badRequest().body("Ticker inválido");
-		}
 
 		try {
 			acaoDatabase = repository.findById(acao.getTicker());
 			
-			if (acaoDatabase.isPresent())
-				return ResponseEntity.status(HttpStatus.FOUND).body(acaoDatabase.get());
+			if (acaoDatabase.isPresent()) {
+				response = new DozerBeanMapper().map(acaoDatabase, AcaoResponse.class);
+				return ResponseEntity.status(HttpStatus.FOUND).body(response);
+			}
 
 			repository.saveAndFlush(acao);
-			return ResponseEntity.status(HttpStatus.CREATED).body(acao);
+			response = new DozerBeanMapper().map(acao, AcaoResponse.class);
+
+			return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
 		} catch (DataIntegrityViolationException e) {
 			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
