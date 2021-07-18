@@ -27,7 +27,6 @@ public class ConsultarListaFIIsService {
 
 	public ResponseEntity consultarListaFIIs() {
 		try {
-
 			listaFIIs = repository.findAll();
 			System.out.println(listaFIIs.size());
 			for (int i = 0; i < listaFIIs.size(); i++) {

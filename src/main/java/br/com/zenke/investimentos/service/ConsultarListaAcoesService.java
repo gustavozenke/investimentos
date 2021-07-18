@@ -27,7 +27,6 @@ public class ConsultarListaAcoesService {
 
 	public ResponseEntity consultarListaAcoes() {
 		try {
-
 			listaAcoes = repository.findAll();
 			System.out.println(listaAcoes.size());
 			for (int i = 0; i < listaAcoes.size(); i++) {

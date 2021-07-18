@@ -7,11 +7,12 @@ import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.models.dto.AcaoRequest;
 
 public class Conversor {
-
-	@Autowired
-	private Acao acao;
 	
 	public static Acao converterAcaoResponseToAcao(AcaoRequest acaoRequest) {
-		return new DozerBeanMapper().map(acaoRequest,Acao.class);
+		return new Acao(acaoRequest.getTicker(),
+						acaoRequest.getPreco(),
+						acaoRequest.getDataIPO(),
+						acaoRequest.getNomeEmpresa(),
+						acaoRequest.getTipo());
 	}
 }

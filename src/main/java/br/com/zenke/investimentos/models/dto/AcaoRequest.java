@@ -10,34 +10,35 @@ import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-public class AcaoRequest {
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class AcaoRequest{
 
-	@NotNull 
-	@NotBlank 
+	@NotNull
+	@NotBlank
 	@Size(min = 5, max = 6)
-	private String Ticker;
+	private String ticker;
 
-	@NotNull 
+	@NotNull
 	@DecimalMin(value = "0.01")
     @Digits(integer = 4, fraction=2)
-	private BigDecimal Preco;
-	
-	@NotNull
-	@NotBlank
-	@Size(min = 1, max = 100)
-	private Date DataIPO;
+	private BigDecimal preco;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dataIPO;
 
 	@NotNull
 	@NotBlank
 	@Size(min = 1, max = 100)
-	private String NomeEmpresa;
+	private String nomeEmpresa;
 
 
-	@NotNull 
-	@NotBlank 
+	@NotNull
+	@NotBlank
 	@Size(min = 2, max = 2)
-	private String Tipo;
-	
+	private String tipo;
+
 }

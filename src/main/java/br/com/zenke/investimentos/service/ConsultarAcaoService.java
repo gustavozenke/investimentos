@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.models.dto.AcaoResponse;
 import br.com.zenke.investimentos.repository.AcaoRepository;
-import br.com.zenke.investimentos.utils.ValidaTicker;
+import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerAcao;
 
 @Service
 public class ConsultarAcaoService {
@@ -25,7 +25,7 @@ public class ConsultarAcaoService {
 
 	public ResponseEntity consultarAcao(String ticker) {
 
-		if (!ValidaTicker.validaTickerAcao(ticker)) {
+		if (!validaTickerAcao(ticker)) {
 			return ResponseEntity.badRequest().body("Ticker inválido");
 		}
 

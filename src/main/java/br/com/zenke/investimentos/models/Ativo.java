@@ -1,5 +1,8 @@
 package br.com.zenke.investimentos.models;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -9,6 +12,11 @@ import java.sql.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Acao.class, name = "Acao"),
+        @JsonSubTypes.Type(value = Fii.class, name = "Fii")
+})
 public abstract class Ativo {
 
     @Id

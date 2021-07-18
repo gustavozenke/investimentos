@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import br.com.zenke.investimentos.models.Fii;
 import br.com.zenke.investimentos.models.dto.FiiResponse;
 import br.com.zenke.investimentos.repository.FIIRepository;
-import br.com.zenke.investimentos.utils.ValidaTicker;
+import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerFII;
 
 @Service
 public class CadastrarFIIService {
@@ -28,7 +28,7 @@ public class CadastrarFIIService {
 	
 	public ResponseEntity cadastrarFII(Fii FII) {
 
-		if (!ValidaTicker.validaTickerFII(FII.getTicker())) {
+		if (!validaTickerFII(FII.getTicker())) {
 			return ResponseEntity.badRequest().body("Ticker inválido");
 		}
 
