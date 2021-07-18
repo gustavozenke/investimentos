@@ -22,20 +22,20 @@ public class FiiRequest {
     @NotNull
     @NotBlank
     @Size(min = 5, max = 6)
-    private String Ticker;
+    private String ticker;
 
     @NotNull
     @NotBlank
     @Size(min = 1, max = 100)
-    private String NomeFundo;
+    private String nomeFundo;
 
     @NotNull
     @DecimalMin(value = "0.01")
     @Digits(integer = 4, fraction=2)
-    private BigDecimal Preco;
+    private BigDecimal preco;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date DataIPO;
+    private Date dataIPO;
 
     @NotNull
     @NotBlank

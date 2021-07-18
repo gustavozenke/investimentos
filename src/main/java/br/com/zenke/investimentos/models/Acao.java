@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-@Data
-@NoArgsConstructor
 @Component
 @Entity
+@Getter
+@NoArgsConstructor
 @Table(name = "acao")
 public class Acao extends Ativo {
 

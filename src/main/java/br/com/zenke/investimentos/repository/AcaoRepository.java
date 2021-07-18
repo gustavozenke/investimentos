@@ -5,6 +5,4 @@ import org.springframework.stereotype.Repository;
 import br.com.zenke.investimentos.models.Acao;
 
 @Repository
-public interface AcaoRepository extends JpaRepository<Acao, String>{
-	
-}
+public interface AcaoRepository extends JpaRepository<Acao, String>{ }

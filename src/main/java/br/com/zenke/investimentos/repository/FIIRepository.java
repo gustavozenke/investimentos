@@ -5,6 +5,4 @@ import org.springframework.stereotype.Repository;
 import br.com.zenke.investimentos.models.Fii;
 
 @Repository
-public interface FIIRepository  extends JpaRepository<Fii, String>{
-
-}
+public interface FIIRepository  extends JpaRepository<Fii, String>{ }
