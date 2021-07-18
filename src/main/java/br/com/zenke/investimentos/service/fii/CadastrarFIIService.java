@@ -1,4 +1,4 @@
-package br.com.zenke.investimentos.service;
+package br.com.zenke.investimentos.service.fii;
 
 import java.util.Optional;
 import org.dozer.DozerBeanMapper;

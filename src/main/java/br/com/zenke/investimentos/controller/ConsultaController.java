@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.zenke.investimentos.service.ConsultarAcaoService;
-import br.com.zenke.investimentos.service.ConsultarFIIService;
-import br.com.zenke.investimentos.service.ConsultarListaAcoesService;
-import br.com.zenke.investimentos.service.ConsultarListaFIIsService;
+import br.com.zenke.investimentos.service.acao.ConsultarAcaoService;
+import br.com.zenke.investimentos.service.fii.ConsultarFIIService;
+import br.com.zenke.investimentos.service.acao.ConsultarListaAcoesService;
+import br.com.zenke.investimentos.service.fii.ConsultarListaFIIsService;
 
 @RestController
 @RequestMapping("/consultar")

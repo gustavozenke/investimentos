@@ -9,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.models.dto.AcaoRequest;
-import br.com.zenke.investimentos.service.CadastrarAcaoService;
-import br.com.zenke.investimentos.service.CadastrarFIIService;
+import br.com.zenke.investimentos.service.acao.CadastrarAcaoService;
+import br.com.zenke.investimentos.service.fii.CadastrarFIIService;
 import static br.com.zenke.investimentos.mapper.Conversor.converterAcaoRequestToAcao;
 import static br.com.zenke.investimentos.mapper.Conversor.converterFiiRequestToFii;
 

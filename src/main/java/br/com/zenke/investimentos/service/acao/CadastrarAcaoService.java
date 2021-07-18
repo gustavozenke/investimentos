@@ -1,4 +1,4 @@
-package br.com.zenke.investimentos.service;
+package br.com.zenke.investimentos.service.acao;
 
 import java.util.Optional;
 

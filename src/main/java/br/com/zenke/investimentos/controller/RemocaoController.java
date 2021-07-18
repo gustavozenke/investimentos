@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zenke.investimentos.service.RemoveAcaoService;
-import br.com.zenke.investimentos.service.RemoveFIIService;
+import br.com.zenke.investimentos.service.acao.RemoveAcaoService;
+import br.com.zenke.investimentos.service.fii.RemoveFIIService;
 
 @RestController
 @RequestMapping("/remover")

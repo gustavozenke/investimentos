@@ -11,19 +11,22 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Component
 @Entity
 @Table(name = "fundosimobiliarios")
-public class Fii{
+public class Fii extends Ativo{
 
-	@Id
-	private String Ticker;
-	private BigDecimal Preco;
-	private Date DataIPO;
 	private String NomeFundo;
+
+	public Fii() { }
+
+	public Fii(String ticker, BigDecimal preco, Date dataIPO, String nomeFundo) {
+		super(ticker, preco, dataIPO);
+		NomeFundo = nomeFundo;
+	}
+
+	public String getNomeFundo() {
+		return NomeFundo;
+	}
 
 }
