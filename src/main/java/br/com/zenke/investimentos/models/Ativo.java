@@ -9,6 +9,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.Locale;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)

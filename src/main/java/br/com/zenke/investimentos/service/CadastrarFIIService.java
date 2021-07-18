@@ -2,6 +2,9 @@ package br.com.zenke.investimentos.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import br.com.zenke.investimentos.models.Acao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -19,12 +22,7 @@ public class CadastrarFIIService {
 	private FIIRepository repository;
 
 	@Autowired
-	private FiiResponse FIIDTO;
-
-	@Autowired
-	private List<Fii> listaFIIs;
-	
-	private final List<FiiResponse> listaAFIIDTO = new ArrayList<>();
+	private Optional<Fii> fiiDatabase;
 	
 	public ResponseEntity cadastrarFII(Fii fii) {
 
@@ -33,12 +31,20 @@ public class CadastrarFIIService {
 		}
 
 		try {
+			fiiDatabase = repository.findById(fii.getTicker());
+
+			if (fiiDatabase.isPresent())
+				return ResponseEntity.status(HttpStatus.FOUND).body(fiiDatabase.get());
+
 			repository.saveAndFlush(fii);
-			return ResponseEntity.status(HttpStatus.CREATED).body("Created");
-		}catch(DataIntegrityViolationException e) {
-			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Erro: "+e.getRootCause().getMessage());
-		}catch(Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getCause());
+			return ResponseEntity.status(HttpStatus.CREATED).body(fii);
+
+		} catch (DataIntegrityViolationException e) {
+			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+					.body("Erro: " + e.getRootCause().getMessage());
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body("Erro" + e.getMessage());
 		}
 	}
 

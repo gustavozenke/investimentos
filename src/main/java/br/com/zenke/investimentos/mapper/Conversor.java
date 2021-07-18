@@ -8,7 +8,7 @@ import br.com.zenke.investimentos.models.dto.AcaoRequest;
 public abstract class Conversor {
 	
 	public static Acao converterAcaoRequestToAcao(AcaoRequest acaoRequest) {
-		return new Acao(acaoRequest.getTicker(),
+		return new Acao(acaoRequest.getTicker().toUpperCase(),
 						acaoRequest.getPreco(),
 						acaoRequest.getDataIPO(),
 						acaoRequest.getNomeEmpresa(),
@@ -16,7 +16,7 @@ public abstract class Conversor {
 	}
 
 	public static Fii converterFiiRequestToFii(FiiRequest fiiRequest) {
-		return new Fii(fiiRequest.getTicker(),
+		return new Fii(fiiRequest.getTicker().toUpperCase(),
 					   fiiRequest.getPreco(),
 					   fiiRequest.getDataIPO(),
 				       fiiRequest.getNomeFundo());
