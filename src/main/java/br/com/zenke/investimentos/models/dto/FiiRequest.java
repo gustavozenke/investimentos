@@ -11,12 +11,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class FiiRequest {
 
     @NotNull
     @NotBlank
     @Size(min = 5, max = 6)
     private String Ticker;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 1, max = 100)
+    private String NomeFundo;
 
     @NotNull
     @DecimalMin(value = "0.01")
@@ -27,10 +35,5 @@ public class FiiRequest {
     @NotBlank
     @Size(min = 1, max = 100)
     private Date DataIPO;
-
-    @NotNull
-    @NotBlank
-    @Size(min = 1, max = 100)
-    private String NomeFundo;
 
 }

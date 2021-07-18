@@ -28,26 +28,22 @@ public class ConsultaController {
 	private ConsultarListaFIIsService consultarListaFIIs;
 
 	@GetMapping("/acao")
-	public ResponseEntity consultarAcao(@RequestParam(name = "ticker", required = true) String ticker) {
-
+	public ResponseEntity consultarAcao(@RequestParam(name = "ticker") String ticker) {
 		return consultarAcao.consultarAcao(ticker);
 	}
 
 	@GetMapping("/fundo_imobiliario")
-	public ResponseEntity consultarFII(@RequestParam(name = "ticker", required = true) String ticker) {
-
+	public ResponseEntity consultarFII(@RequestParam(name = "ticker") String ticker) {
 		return consultarFII.consultarFII(ticker);
 	}
 
 	@GetMapping("/lista_acoes")
 	public ResponseEntity consultarListaAcoes() {
-
 		return consultarListaAcoes.consultarListaAcoes();
 	}
 	
 	@GetMapping("/lista_fundos_imobiliarios")
 	public ResponseEntity consultarListaFIIs() {
-
 		return consultarListaFIIs.consultarListaFIIs();
 	}
 

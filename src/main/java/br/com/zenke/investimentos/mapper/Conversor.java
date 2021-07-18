@@ -1,18 +1,25 @@
 package br.com.zenke.investimentos.mapper;
 
-import org.dozer.DozerBeanMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import br.com.zenke.investimentos.models.Fii;
+import br.com.zenke.investimentos.models.dto.FiiRequest;
 import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.models.dto.AcaoRequest;
 
-public class Conversor {
+public abstract class Conversor {
 	
-	public static Acao converterAcaoResponseToAcao(AcaoRequest acaoRequest) {
+	public static Acao converterAcaoRequestToAcao(AcaoRequest acaoRequest) {
 		return new Acao(acaoRequest.getTicker(),
 						acaoRequest.getPreco(),
 						acaoRequest.getDataIPO(),
 						acaoRequest.getNomeEmpresa(),
 						acaoRequest.getTipo());
 	}
+
+	public static Fii converterFiiRequestToFii(FiiRequest fiiRequest) {
+		return new Fii(fiiRequest.getTicker(),
+					   fiiRequest.getPreco(),
+					   fiiRequest.getDataIPO(),
+				       fiiRequest.getNomeFundo());
+	}
+
 }

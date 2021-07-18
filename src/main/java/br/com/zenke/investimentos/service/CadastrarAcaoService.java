@@ -19,14 +19,14 @@ public class CadastrarAcaoService {
 	@Autowired
 	private Optional<Acao> acaoDatabase;
 
-	public ResponseEntity<?> cadastrarAcao(String ticker, Acao acao) {
+	public ResponseEntity<?> cadastrarAcao(Acao acao) {
 
-		if (!validaTickerAcao(ticker)) {
+		if (!validaTickerAcao(acao.getTicker())) {
 			return ResponseEntity.badRequest().body("Ticker inválido");
 		}
 
 		try {
-			acaoDatabase = repository.findById(ticker);
+			acaoDatabase = repository.findById(acao.getTicker());
 			
 			if (acaoDatabase.isPresent())
 				return ResponseEntity.status(HttpStatus.FOUND).body(acaoDatabase.get());

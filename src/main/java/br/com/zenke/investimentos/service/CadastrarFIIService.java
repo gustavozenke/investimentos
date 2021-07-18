@@ -26,14 +26,14 @@ public class CadastrarFIIService {
 	
 	private final List<FiiResponse> listaAFIIDTO = new ArrayList<>();
 	
-	public ResponseEntity cadastrarFII(Fii FII) {
+	public ResponseEntity cadastrarFII(Fii fii) {
 
-		if (!validaTickerFII(FII.getTicker())) {
+		if (!validaTickerFII(fii.getTicker())) {
 			return ResponseEntity.badRequest().body("Ticker inválido");
 		}
 
 		try {
-			repository.saveAndFlush(FII);
+			repository.saveAndFlush(fii);
 			return ResponseEntity.status(HttpStatus.CREATED).body("Created");
 		}catch(DataIntegrityViolationException e) {
 			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Erro: "+e.getRootCause().getMessage());
