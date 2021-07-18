@@ -2,6 +2,8 @@ package br.com.zenke.investimentos.models.dto;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -9,22 +11,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Component
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class FiiResponse {
 
 	@JsonProperty("ticker")
-	private String Ticker;
+	private String ticker;
 	
 	@JsonProperty("nome_fundo")
-	private String NomeFundo;
+	private String nomeFundo;
 	
 	@JsonProperty("preco_cota")
-	private BigDecimal Preco;
+	private BigDecimal preco;
 	
 	@JsonProperty("data_ipo")
-	private Date DataIPO;
+	private Date dataIPO;
 
 	@JsonProperty("setor")
 	private String setor;

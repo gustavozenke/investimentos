@@ -2,6 +2,7 @@ package br.com.zenke.investimentos.service.acao;
 
 import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class RemoveAcaoService {
 			repository.deleteById(ticker);
 			return ResponseEntity.ok().body("Ação " + ticker + " removida com sucesso da base de dados.");
 
-		} catch (NoSuchElementException e) {
+		} catch (EmptyResultDataAccessException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body("Ação não encontrada");
 		} catch (Exception e) {

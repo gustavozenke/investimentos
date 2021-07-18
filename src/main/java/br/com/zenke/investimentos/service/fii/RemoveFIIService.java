@@ -2,6 +2,7 @@ package br.com.zenke.investimentos.service.fii;
 
 import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class RemoveFIIService {
 			repository.deleteById(ticker);
 			return ResponseEntity.ok().body("Fundo " + ticker + " removido com sucesso da base de dados.");
 
-		} catch (NoSuchElementException e) {
+		} catch (EmptyResultDataAccessException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body("Fundo não encontrado");
 		} catch (Exception e) {

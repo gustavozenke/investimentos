@@ -9,7 +9,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.Locale;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -21,28 +20,34 @@ import java.util.Locale;
 public abstract class Ativo {
 
     @Id
-    private String Ticker;
-    private BigDecimal Preco;
-    private Date DataIPO;
+    private String ticker;
+    private BigDecimal preco;
+    private Date dataIPO;
+    private String setor;
 
-    public Ativo(String ticker, BigDecimal preco, Date dataIPO) {
-        this.Ticker = ticker;
-        this.Preco = preco;
-        this.DataIPO = dataIPO;
+    public Ativo(String ticker, BigDecimal preco, Date dataIPO, String setor) {
+        this.ticker = ticker;
+        this.preco = preco;
+        this.dataIPO = dataIPO;
+        this.setor = setor;
     }
 
     public Ativo() { }
 
     public String getTicker() {
-        return this.Ticker;
+        return this.ticker;
     }
 
     public BigDecimal getPreco() {
-        return this.Preco;
+        return this.preco;
     }
 
     public Date getDataIPO() {
-        return this.DataIPO;
+        return this.dataIPO;
+    }
+
+    public String getSetor() {
+        return setor;
     }
 
 }

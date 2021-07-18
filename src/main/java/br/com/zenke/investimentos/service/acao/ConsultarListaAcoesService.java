@@ -11,6 +11,8 @@ import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.models.dto.AcaoResponse;
 import br.com.zenke.investimentos.repository.AcaoRepository;
 
+import static br.com.zenke.investimentos.mapper.Conversor.converterAcaoToAcaoResponse;
+
 @Service
 public class ConsultarListaAcoesService {
 
@@ -18,24 +20,22 @@ public class ConsultarListaAcoesService {
 	private AcaoRepository repository;
 
 	@Autowired
-	private AcaoResponse AcaoDTO;
-
-	@Autowired
 	private List<Acao> listaAcoes;
 
-	private final List<AcaoResponse> listaAcoesDTO = new ArrayList<>();
+	@Autowired
+	private List<AcaoResponse> listaAcoesResponse;
 
 	public ResponseEntity consultarListaAcoes() {
 
 		try {
+
 			listaAcoes = repository.findAll();
+			listaAcoesResponse = new ArrayList<>();
 
-			for (int i = 0; i < listaAcoes.size(); i++) {
-				AcaoDTO = new DozerBeanMapper().map(listaAcoes.get(i), AcaoResponse.class);
-				listaAcoesDTO.add(AcaoDTO);
-			}
+			for (int i = 0; i < listaAcoes.size(); i++)
+				listaAcoesResponse.add(converterAcaoToAcaoResponse(listaAcoes.get(i)));
 
-			return ResponseEntity.ok(listaAcoesDTO);
+			return ResponseEntity.ok(listaAcoesResponse);
 
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

@@ -11,6 +11,8 @@ import br.com.zenke.investimentos.models.Fii;
 import br.com.zenke.investimentos.models.dto.FiiResponse;
 import br.com.zenke.investimentos.repository.FIIRepository;
 
+import static br.com.zenke.investimentos.mapper.Conversor.converterFiiToFiiResponse;
+
 @Service
 public class ConsultarListaFIIsService {
 
@@ -20,22 +22,21 @@ public class ConsultarListaFIIsService {
 	@Autowired
 	private List<Fii> listaFIIs;
 
-	private final List<FiiResponse> listaFIIsDTO = new ArrayList<>();
-
 	@Autowired
-	private FiiResponse FIIDTO;
+	private List<FiiResponse> listaFiiResponse;
+
 
 	public ResponseEntity consultarListaFIIs() {
 
 		try {
+
 			listaFIIs = repository.findAll();
+			listaFiiResponse = new ArrayList<>();
 
-			for (int i = 0; i < listaFIIs.size(); i++) {
-				FIIDTO = new DozerBeanMapper().map(listaFIIs.get(i), FiiResponse.class);
-				listaFIIsDTO.add(FIIDTO);
-			}
+			for (int i = 0; i < listaFIIs.size(); i++)
+				listaFiiResponse.add(converterFiiToFiiResponse(listaFIIs.get(i)));
 
-			return ResponseEntity.ok(listaFIIsDTO);
+			return ResponseEntity.ok(listaFiiResponse);
 
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

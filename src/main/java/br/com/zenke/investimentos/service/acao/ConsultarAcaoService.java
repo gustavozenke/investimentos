@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.models.dto.AcaoResponse;
 import br.com.zenke.investimentos.repository.AcaoRepository;
+
+import static br.com.zenke.investimentos.mapper.Conversor.converterAcaoToAcaoResponse;
+import static br.com.zenke.investimentos.mapper.Conversor.converterFiiToFiiResponse;
 import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerAcao;
 
 @Service
@@ -20,8 +23,6 @@ public class ConsultarAcaoService {
 	@Autowired
 	private Acao acao;
 
-	@Autowired
-	private AcaoResponse response;
 
 	public ResponseEntity consultarAcao(String ticker) {
 
@@ -30,10 +31,9 @@ public class ConsultarAcaoService {
 		}
 
 		try {
-			acao = repository.findById(ticker).get();
-			response = new DozerBeanMapper().map(acao, AcaoResponse.class);
 
-			return ResponseEntity.ok(response);
+			acao = repository.findById(ticker).get();
+			return ResponseEntity.ok(converterAcaoToAcaoResponse(acao));
 
 		} catch (NoSuchElementException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)

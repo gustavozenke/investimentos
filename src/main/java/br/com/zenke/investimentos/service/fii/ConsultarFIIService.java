@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import br.com.zenke.investimentos.models.Fii;
 import br.com.zenke.investimentos.models.dto.FiiResponse;
 import br.com.zenke.investimentos.repository.FIIRepository;
+
+import static br.com.zenke.investimentos.mapper.Conversor.converterFiiToFiiResponse;
 import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerFII;
 
 @Service
@@ -18,22 +20,17 @@ public class ConsultarFIIService {
 	private FIIRepository repository;
 
 	@Autowired
-	private Fii FII;
-
-	@Autowired
-	private FiiResponse response;
+	private Fii fii;
 
 	public ResponseEntity consultarFII(String ticker) {
 
-		if (!validaTickerFII(ticker)) {
+		if (!validaTickerFII(ticker))
 			return ResponseEntity.badRequest().body("Ticker inválido");
-		}
 
 		try {
-			FII = repository.findById(ticker).get();
-			response = new DozerBeanMapper().map(FII, FiiResponse.class);
 
-			return ResponseEntity.ok(response);
+			fii = repository.findById(ticker).get();
+			return ResponseEntity.ok(converterFiiToFiiResponse(fii));
 
 		} catch (NoSuchElementException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
