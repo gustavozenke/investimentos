@@ -29,14 +29,24 @@ public abstract class Conversor {
 		return new Fii(fiiRequest.getTicker().toUpperCase(),
 					   fiiRequest.getPreco(),
 					   fiiRequest.getDataIPO(),
-				       fiiRequest.getNomeFundo());
+				       fiiRequest.getNomeFundo(),
+					   fiiRequest.getSetor(),
+					   fiiRequest.getDividendYeld(),
+				       fiiRequest.getDividendo(),
+					   fiiRequest.getVacanciaFisica(),
+					   fiiRequest.getQuantidadeAtivos());
 	}
 
 	public static FiiResponse converterFiiToFiiResponse(Fii fii) {
 		return new FiiResponse(fii.getTicker().toUpperCase(),
 							   fii.getNomeFundo(),
 							   fii.getPreco(),
-							   fii.getDataIPO());
+							   fii.getDataIPO(),
+							   fii.getSetor(),
+							   fii.getDividendYeld(),
+							   fii.getDividendo(),
+							   fii.getVacanciaFisica(),
+							   fii.getQuantidadeAtivos());
 	}
 
 }

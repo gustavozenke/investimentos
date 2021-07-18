@@ -37,7 +37,7 @@ public class CadastroController {
 	}
 
 	@PostMapping("/fundo_imobiliario")
-	public ResponseEntity cadastrarFII(@RequestBody FiiRequest fiiRequest) {
+	public ResponseEntity cadastrarFII(@Valid @RequestBody FiiRequest fiiRequest) {
 		fii = converterFiiRequestToFii(fiiRequest);
 		return cadastrarFII.cadastrarFII(fii);
 	}

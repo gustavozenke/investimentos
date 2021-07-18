@@ -25,5 +25,20 @@ public class FiiResponse {
 	
 	@JsonProperty("data_ipo")
 	private Date DataIPO;
+
+	@JsonProperty("setor")
+	private String setor;
+
+	@JsonProperty("dividend_yeld")
+	private float dividendYeld;
+
+	@JsonProperty("dividendo")
+	private BigDecimal dividendo;
+
+	@JsonProperty("vacancia_fisica")
+	private float vacanciaFisica;
+
+	@JsonProperty("quantidade_de_ativos")
+	private String quantidadeAtivos;
 	
 }

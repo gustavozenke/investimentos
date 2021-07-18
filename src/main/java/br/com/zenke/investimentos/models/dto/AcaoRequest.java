@@ -35,7 +35,6 @@ public class AcaoRequest{
 	@Size(min = 1, max = 100)
 	private String nomeEmpresa;
 
-
 	@NotNull
 	@NotBlank
 	@Size(min = 2, max = 2)

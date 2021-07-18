@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,9 +32,26 @@ public class FiiRequest {
     @Digits(integer = 4, fraction=2)
     private BigDecimal Preco;
 
-    @NotNull
-    @NotBlank
-    @Size(min = 1, max = 100)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date DataIPO;
 
+    @NotNull
+    @NotBlank
+    @Size(min = 1, max = 50)
+    private String setor;
+
+    @NotNull
+    @Digits(integer = 3, fraction=2)
+    private float dividendYeld;
+
+    @NotNull
+    @DecimalMin(value = "0.01")
+    private BigDecimal dividendo;
+
+    @NotNull
+    @Digits(integer = 3, fraction=2)
+    private float vacanciaFisica;
+
+    @NotNull
+    private String quantidadeAtivos;
 }
