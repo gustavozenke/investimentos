@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.repository.AcaoRepository;
+
+import static br.com.zenke.investimentos.mapper.Conversor.converterAcaoToAcaoResponse;
 import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerAcao;
 
 @Service
@@ -23,9 +25,6 @@ public class CadastrarAcaoService {
 	@Autowired
 	private Optional<Acao> acaoDatabase;
 
-	@Autowired
-	private AcaoResponse response;
-
 	public ResponseEntity<?> cadastrarAcao(Acao acao) {
 
 		if (!validaTickerAcao(acao.getTicker()))
@@ -34,15 +33,14 @@ public class CadastrarAcaoService {
 		try {
 			acaoDatabase = repository.findById(acao.getTicker());
 			
-			if (acaoDatabase.isPresent()) {
-				response = new DozerBeanMapper().map(acaoDatabase, AcaoResponse.class);
-				return ResponseEntity.status(HttpStatus.FOUND).body(response);
-			}
+			if (acaoDatabase.isPresent())
+				return ResponseEntity.status(HttpStatus.FOUND)
+						.body(converterAcaoToAcaoResponse(acaoDatabase.get()));
 
 			repository.saveAndFlush(acao);
-			response = new DozerBeanMapper().map(acao, AcaoResponse.class);
 
-			return ResponseEntity.status(HttpStatus.CREATED).body(response);
+			return ResponseEntity.status(HttpStatus.CREATED)
+					.body(converterAcaoToAcaoResponse(acao));
 
 		} catch (DataIntegrityViolationException e) {
 			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
