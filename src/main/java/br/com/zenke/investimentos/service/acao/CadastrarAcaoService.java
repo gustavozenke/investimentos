@@ -1,10 +1,6 @@
 package br.com.zenke.investimentos.service.acao;
 
 import java.util.Optional;
-
-import br.com.zenke.investimentos.models.dto.AcaoResponse;
-import br.com.zenke.investimentos.models.dto.FiiResponse;
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -12,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.repository.AcaoRepository;
-
 import static br.com.zenke.investimentos.mapper.Conversor.converterAcaoToAcaoResponse;
 import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerAcao;
 

@@ -2,7 +2,6 @@ package br.com.zenke.investimentos.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;

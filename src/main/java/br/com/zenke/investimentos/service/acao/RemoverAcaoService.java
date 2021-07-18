@@ -1,6 +1,5 @@
 package br.com.zenke.investimentos.service.acao;
 
-import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;

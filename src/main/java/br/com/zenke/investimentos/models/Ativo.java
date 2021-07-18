@@ -1,8 +1,7 @@
 package br.com.zenke.investimentos.models;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -11,12 +10,9 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
+@Getter
+@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Acao.class, name = "Acao"),
-        @JsonSubTypes.Type(value = Fii.class, name = "Fii")
-})
 public abstract class Ativo {
 
     @Id
@@ -30,24 +26,6 @@ public abstract class Ativo {
         this.preco = preco;
         this.dataIPO = dataIPO;
         this.setor = setor;
-    }
-
-    public Ativo() { }
-
-    public String getTicker() {
-        return this.ticker;
-    }
-
-    public BigDecimal getPreco() {
-        return this.preco;
-    }
-
-    public Date getDataIPO() {
-        return this.dataIPO;
-    }
-
-    public String getSetor() {
-        return setor;
     }
 
 }

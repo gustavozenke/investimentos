@@ -1,7 +1,6 @@
 package br.com.zenke.investimentos.controller;
 
 import javax.validation.Valid;
-
 import br.com.zenke.investimentos.models.Fii;
 import br.com.zenke.investimentos.models.dto.FiiRequest;
 import org.springframework.beans.factory.annotation.Autowired;
