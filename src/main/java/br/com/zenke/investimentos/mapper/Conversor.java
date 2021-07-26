@@ -1,11 +1,9 @@
 package br.com.zenke.investimentos.mapper;
 
 import br.com.zenke.investimentos.models.Fii;
-import br.com.zenke.investimentos.models.dto.AcaoResponse;
-import br.com.zenke.investimentos.models.dto.FiiRequest;
+import br.com.zenke.investimentos.models.Pessoa;
+import br.com.zenke.investimentos.models.dto.*;
 import br.com.zenke.investimentos.models.Acao;
-import br.com.zenke.investimentos.models.dto.AcaoRequest;
-import br.com.zenke.investimentos.models.dto.FiiResponse;
 
 public abstract class Conversor {
 	
@@ -66,6 +64,21 @@ public abstract class Conversor {
 							   fii.getDividendo(),
 							   fii.getVacanciaFisica(),
 							   fii.getQuantidadeAtivos());
+	}
+
+	public static Pessoa converterPessoaRequestToPessoa(PessoaRequest pessoaRequest) {
+		return new Pessoa(pessoaRequest.getCpf(),
+						  pessoaRequest.getNome(),
+						  pessoaRequest.getEmail(),
+						  pessoaRequest.getNumeroContato());
+	}
+
+	public static PessoaResponse converterPessoaToPessoaResponse(Pessoa pessoa) {
+		return new PessoaResponse(pessoa.getNome(),
+								  pessoa.getCpf(),
+								  pessoa.getEmail(),
+								  pessoa.getNumeroContato(),
+								  pessoa.getCarteira());
 	}
 
 }
