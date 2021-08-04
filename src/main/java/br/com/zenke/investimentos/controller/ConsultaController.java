@@ -1,6 +1,5 @@
 package br.com.zenke.investimentos.controller;
 
-import br.com.zenke.investimentos.service.pessoa.ConsultarPessoa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,9 +27,6 @@ public class ConsultaController {
 	@Autowired
 	private ConsultarListaFIIsService consultarListaFIIs;
 
-	@Autowired
-	private ConsultarPessoa consultarPessoa;
-
 	@GetMapping("/acao")
 	public ResponseEntity consultarAcao(@RequestParam(name = "ticker") String ticker) {
 		return consultarAcao.consultarAcao(ticker);
@@ -49,11 +45,6 @@ public class ConsultaController {
 	@GetMapping("/lista_fundos_imobiliarios")
 	public ResponseEntity consultarListaFIIs() {
 		return consultarListaFIIs.consultarListaFIIs();
-	}
-
-	@GetMapping("/pessoa")
-	public ResponseEntity consultarPessoa(@RequestParam(name = "cpf") String cpf) {
-		return consultarPessoa.consultarPessoa(cpf);
 	}
 
 }
