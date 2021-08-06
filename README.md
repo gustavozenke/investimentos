@@ -19,7 +19,7 @@ ________________________________________________________________________________
 
 
 ### Objetivo
-<p>Este projeto tem por objetivo colocar em prática os principais conceitos vistos na disciplina de Programação Orientada a Objetos por meio de uma API que realiza um CRUD (Create, Read, Update, Delete) simples para ações e fundos imobiliários.</p>
+<p>Este projeto tem por objetivo colocar em prática os principais conceitos vistos na disciplina de Programação Orientada a Objetos por meio de uma API que realiza um CRUD (Create, Read, Update, Delete) de ações e fundos imobiliários em uma base MySql.</p>
 
 _________________________________________________________________________________________________________________________________________________
 
