@@ -1,5 +1,5 @@
 <h1 align="center">Investimentos</h1>
-<p align="center"> 💰 API para cadastro, consulta, atualização e remoção de ativos de renda variável e carteira de investimentos 💰</p>
+<p align="center"> 💰 API para cadastro, consulta, atualização e remoção de ativos de renda variável 💰</p>
 
 _________________________________________________________________________________________________________________________________________________
 
