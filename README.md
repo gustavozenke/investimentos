@@ -19,7 +19,7 @@ ________________________________________________________________________________
 
 
 ### Objetivo
-<p>Este projeto tem por objetivo colocar em prática os principais conceitos vistos na disciplina de Programação Orientada a Objetos por meio de uma API que realiza um CRUD (Create, Read, Update, Delete) simples para ações, fundos imobiliários e criaçãop de uma carteira de investimentos, que poderá conter um ou mais destes ativos de renda variável.</p>
+<p>Este projeto tem por objetivo colocar em prática os principais conceitos vistos na disciplina de Programação Orientada a Objetos por meio de uma API que realiza um CRUD (Create, Read, Update, Delete) simples para ações e fundos imobiliários.</p>
 
 _________________________________________________________________________________________________________________________________________________
 
@@ -32,12 +32,8 @@ ________________________________________________________________________________
 - [x] Consulta de lista de fundos imobiliários inclusos na base
 - [x] Remoção de ação cadastrada na base
 - [x] Remoção de fundo imobiliário cadastrado na base
-- [ ] Atualização de ação cadastrada na base
-- [ ] Atualização de fundo imobiliário cadastrado na base
-- [ ] Cadastro de carteira de investimentos
-- [ ] Inclusão de ação na carteira de investimentos
-- [ ] Inclusão de fundo imobiliário na carteira de investimentos
-- [ ] Remoção de fundo imobiliário na carteira de investimentos
+- [x] Atualização de ação cadastrada na base
+- [x] Atualização de fundo imobiliário cadastrado na base
 
 _________________________________________________________________________________________________________________________________________________
 
