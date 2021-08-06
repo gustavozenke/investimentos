@@ -13,6 +13,7 @@ import br.com.zenke.investimentos.service.fii.RemoverFIIService;
 @RequestMapping("/remover")
 public class RemocaoController {
 
+	@Autowired
 	private RemoverAcaoService removerAcao;
 	
 	@Autowired

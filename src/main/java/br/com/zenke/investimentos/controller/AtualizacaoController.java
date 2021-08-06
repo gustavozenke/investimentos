@@ -5,6 +5,7 @@ import br.com.zenke.investimentos.models.Fii;
 import br.com.zenke.investimentos.models.dto.AcaoRequest;
 import br.com.zenke.investimentos.models.dto.FiiRequest;
 import br.com.zenke.investimentos.service.acao.AtualizarAcaoService;
+import br.com.zenke.investimentos.service.fii.AtualizarFIIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,20 +26,18 @@ public class AtualizacaoController {
     @Autowired
     private AtualizarAcaoService atualizarAcao;
 
-    //@Autowired
-    //private AtualizarFIIService atualizarFII;
+    @Autowired
+    private AtualizarFIIService atualizarFII;
 
     @PutMapping("/acao")
-    public ResponseEntity cadastrarAcao(@Valid @RequestBody AcaoRequest acaoRequest) {
+    public ResponseEntity atualizarAcao(@Valid @RequestBody AcaoRequest acaoRequest) {
         acao = converterAcaoRequestToAcao(acaoRequest);
         return atualizarAcao.atualizarAcao(acao);
     }
 
-   /* @PutMapping("/fundo_imobiliario")
-    public ResponseEntity cadastrarFII(@Valid @RequestBody FiiRequest fiiRequest) {
+   @PutMapping("/fundo_imobiliario")
+    public ResponseEntity atualizarFII(@Valid @RequestBody FiiRequest fiiRequest) {
         fii = converterFiiRequestToFii(fiiRequest);
-        return AtualizarFIIService.cadastrarFII(fii);
-    }*/
-
-
+        return atualizarFII.atualizarFii(fii);
+    }
 }

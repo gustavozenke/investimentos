@@ -7,6 +7,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.Optional;
 import static br.com.zenke.investimentos.mapper.Conversor.converterAcaoToAcaoResponse;
 import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerAcao;
@@ -30,7 +33,11 @@ public class AtualizarAcaoService {
             acaoDatabase = repository.findById(acao.getTicker());
 
             if (acaoDatabase.isPresent()){
-                repository.setUserInfoById(acao.getNomeEmpresa(),
+                repository.updateInfoByTicker(
+                    acao.getPreco(),
+                    acao.getDataIPO(),
+                    acao.getSetor(),
+                    acao.getNomeEmpresa(),
                     acao.getTipo(),
                     acao.getSubSetor(),
                     acao.getSegmento(),
@@ -42,10 +49,12 @@ public class AtualizarAcaoService {
                     acao.getReturnOnAsset(),
                     acao.getValorDeMercado(),
                     acao.getTicker());
-            }
 
-            return ResponseEntity.status(HttpStatus.ACCEPTED)
-                    .body(converterAcaoToAcaoResponse(acao));
+                return ResponseEntity.status(HttpStatus.ACCEPTED)
+                        .body(converterAcaoToAcaoResponse(acao));
+            }else
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Ação não encontrada.");
 
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
