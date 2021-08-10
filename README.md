@@ -7,7 +7,6 @@ ________________________________________________________________________________
  <a href="#objetivo">Objetivo</a> •
  <a href="#features">Features</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
- <a href="#licenca">Licenca</a> • 
  <a href="#autor">Autor</a>
 </p>
 
