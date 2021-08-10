@@ -29,7 +29,7 @@ public class ConsultarListaFiiServiceTest {
     private List<Fii> listaFii = new ArrayList<>();
 
     @Test
-    void testar_consulta_acao() {
+    void testar_consulta_lista_de_fiis() {
 
         Fii fiiExpected = new Fii("VRTA11",
                 new BigDecimal(126.49),

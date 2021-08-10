@@ -26,7 +26,7 @@ public class ConsultarListaAcoesServiceTest {
     private List<Acao> listaAcoes = new ArrayList<>();
 
     @Test
-    void testar_consulta_acao() {
+    void testar_consulta_lista_de_acoes() {
 
         Acao acaoExpected = new Acao("RADL4",
                 new BigDecimal("90.09"),

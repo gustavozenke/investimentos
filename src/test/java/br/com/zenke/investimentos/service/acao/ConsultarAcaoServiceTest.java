@@ -3,14 +3,10 @@ package br.com.zenke.investimentos.service.acao;
 import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.models.dto.AcaoResponse;
 import br.com.zenke.investimentos.repository.AcaoRepository;
-import br.com.zenke.investimentos.service.acao.ConsultarAcaoService;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import java.math.BigDecimal;
@@ -18,7 +14,6 @@ import java.sql.Date;
 import java.util.Optional;
 import static br.com.zenke.investimentos.mapper.Conversor.converterAcaoToAcaoResponse;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
