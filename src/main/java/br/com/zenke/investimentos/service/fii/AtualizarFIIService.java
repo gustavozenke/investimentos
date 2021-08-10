@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
-
 import static br.com.zenke.investimentos.mapper.Conversor.converterFiiToFiiResponse;
 import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerAcao;
 
