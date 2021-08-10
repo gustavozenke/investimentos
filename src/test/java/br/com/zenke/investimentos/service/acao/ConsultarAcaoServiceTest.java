@@ -29,21 +29,21 @@ class ConsultarAcaoServiceTest {
 	void testar_consulta_acao() {
 
 		 Acao acaoExpected = new Acao("RADL4",
-				new BigDecimal(90.09),
+				new BigDecimal("90.09"),
 				new Date(1997, 9, 17),
 				"Saude",
 				"Raia Drogasil S.A",
 				"ON", "Comercio e distribuicao",
 				"Medicamento e outros produtos",
-				new BigDecimal(4448000000.00),
-				new BigDecimal(14150000000.00),
-				new BigDecimal(898380000.00),
-				new BigDecimal(547730000.00),
+				new BigDecimal("4448000000.00"),
+				new BigDecimal("14150000000.00"),
+				new BigDecimal("898380000.00"),
+				new BigDecimal("547730000.00"),
 				12.21f,
 				3.87f,
-				new BigDecimal(44750000000.00));
+				new BigDecimal("44750000000.00"));
 
-		when(repository.findById(anyString())).thenReturn(Optional.ofNullable(acaoExpected));
+		when(repository.findById(anyString())).thenReturn(Optional.of(acaoExpected));
 
 		AcaoResponse acaoResponse = (AcaoResponse) consultarAcaoService.consultarAcao("RADL4").getBody();
 

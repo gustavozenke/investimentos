@@ -8,8 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Objects;
 import java.util.Optional;
 import static br.com.zenke.investimentos.mapper.Conversor.converterAcaoToAcaoResponse;
 import static br.com.zenke.investimentos.utils.ValidaTicker.validaTickerAcao;
@@ -58,7 +57,7 @@ public class AtualizarAcaoService {
 
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
-                    .body("Erro: " + e.getRootCause().getMessage());
+                    .body("Erro: " + Objects.requireNonNull(e.getRootCause()).getMessage());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Erro" + e.getMessage());
