@@ -1,4 +1,4 @@
-package br.com.zenke.investimentos;
+package br.com.zenke.investimentos.service.acao;
 
 import br.com.zenke.investimentos.models.Acao;
 import br.com.zenke.investimentos.models.dto.AcaoResponse;
@@ -22,14 +22,13 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class InvestimentosApplicationTests {
+class ConsultarAcaoServiceTest {
 
 	@InjectMocks
 	private ConsultarAcaoService consultarAcaoService;
 
 	@Mock
 	private AcaoRepository repository;
-
 
 	@Test
 	void testar_consulta_acao() {
@@ -49,12 +48,12 @@ class InvestimentosApplicationTests {
 				3.87f,
 				new BigDecimal(44750000000.00));
 
-		System.out.println(acaoExpected.getTicker());
 		when(repository.findById(anyString())).thenReturn(Optional.ofNullable(acaoExpected));
 
-		AcaoResponse teste = (AcaoResponse) consultarAcaoService.consultarAcao("RADL4").getBody();
+		AcaoResponse acaoResponse = (AcaoResponse) consultarAcaoService.consultarAcao("RADL4").getBody();
 
 		Assertions.assertEquals(ResponseEntity.ok(converterAcaoToAcaoResponse(acaoExpected)).getBody().getTicker(),
-				teste.getTicker());
+				acaoResponse.getTicker());
+
 	}
 }
